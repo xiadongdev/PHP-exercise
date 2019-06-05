@@ -3,6 +3,20 @@
   if(isset($_POST['submit'])){
     updateData();
   }
+
+  //print_r($_GET);
+
+  $name = 'keke';
+  $value = 100;
+  $expiration = time() + (60 * 60 * 24 * 7);
+
+  setcookie($name, $value, $expiration);
+  if(isset($_COOKIE['keke'])){
+    $keke = $_COOKIE['keke'];
+    echo $keke;
+  } else {
+    $keke = '';
+  }
 ?>
 
 <!DOCTYPE html>
@@ -38,8 +52,9 @@
         </div>
         <input class="btn btn-warning" type="submit" name="submit" value="Submit">
       </form>
-
-      
+    </div>
+    <div>
+      <a href="login.php?id=200">Click here</a>
     </div>
   </div>
 </body>
