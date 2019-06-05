@@ -1,6 +1,6 @@
 <?php
   include 'db.php';
-
+  
   function showAllData(){
     global $connection;
     //read from database
@@ -16,13 +16,26 @@
       echo "<option value='$id'>$id</option>";
     }
   }
-  
 
-  if(isset($_POST['submit'])){
+  function updateData(){
+    global $connection;
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $id = $_POST['id'];
 
     //insert into database
     //$query = "INSERT INTO users (username, password) VAlUES ('$username', '$password')"; 
+
+    //update database
+    $query = "UPDATE users SET username = '$username', password = '$password' WHERE id = $id";
+    $result = mysqli_query($connection, $query);
+
+    if(!$result){
+      die('query failed' . mysqli_error($connection));
+    
+    }
   }
+  
+
+  
 ?>
