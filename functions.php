@@ -23,6 +23,14 @@
     $password = $_POST['password'];
     $id = $_POST['id'];
 
+    $username = mysqli_real_escape_string($connection, $username);
+    $password = mysqli_real_escape_string($connection, $password);
+
+    $hashFormat = "$2y$10$";
+    $salt = "randomsillystuff";
+    $hashF_and_salt = $hashFormat . $salt;
+    $password = crypt($password, $hashF_and_salt);
+
     //insert into database
     //$query = "INSERT INTO users (username, password) VAlUES ('$username', '$password')"; 
 
