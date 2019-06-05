@@ -26,10 +26,7 @@
     $username = mysqli_real_escape_string($connection, $username);
     $password = mysqli_real_escape_string($connection, $password);
 
-    $hashFormat = "$2y$10$";
-    $salt = "randomsillystuff";
-    $hashF_and_salt = $hashFormat . $salt;
-    $password = crypt($password, $hashF_and_salt);
+    $password = password_hash($password, PASSWORD_DEFAULT);
 
     //insert into database
     //$query = "INSERT INTO users (username, password) VAlUES ('$username', '$password')"; 
